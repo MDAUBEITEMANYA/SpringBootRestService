@@ -1,5 +1,7 @@
 package springboot.topjava.ru.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResponse pay(BaseResponse response) {
-        System.out.println(name);
+        Logger logger = LoggerFactory.getLogger(UserService.class);
+        logger.info("User Id = {}.", name);
         response.setAge(configProperties.getAge());
         response.setPayment(configProperties.getPayment());
         return response;

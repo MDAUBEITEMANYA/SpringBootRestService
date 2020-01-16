@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "default")
 
-
 public class ConfigProperties {
     private Integer age;
     private Integer payment;
