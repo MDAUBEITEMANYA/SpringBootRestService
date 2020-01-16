@@ -1,5 +1,7 @@
 package springboot.topjava.ru.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ public class PaymentController {
     @Autowired
     private UserService UserService;
 
-    private final String sharedKey = "SHARED_KEY";
+    private final String SHARED_KEY = "SHARED_KEY";
     private static final String SUCCESS_STATUS = "success";
     private static final String ERROR_STATUS = "error";
     private static final int CODE_SUCCESS = 100;
@@ -32,10 +34,11 @@ public class PaymentController {
 
         final BaseResponse response;
 
-        if (sharedKey.equalsIgnoreCase(key)) {
-            int userId = request.getUserId();
-            String itemId = request.getItemId();
-            double discount = request.getDiscount();
+        if (SHARED_KEY.equalsIgnoreCase(key)) {
+            Logger logger = LoggerFactory.getLogger(PaymentRequest.class);
+            logger.info("User Id = {}.", request.getUserId());
+            logger.info("Item Id = {}.", request.getItemId());
+            logger.info("Discount = {}.", request.getDiscount());
 
             response = new BaseResponse(SUCCESS_STATUS, CODE_SUCCESS);
         } else {
