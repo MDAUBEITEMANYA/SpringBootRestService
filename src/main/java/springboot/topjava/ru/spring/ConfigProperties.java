@@ -17,6 +17,14 @@ public class ConfigProperties {
         return age;
     }
 
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setPayment(Integer payment) {
+        this.payment = payment;
+    }
+
     public Integer getPayment() {
         return payment;
     }

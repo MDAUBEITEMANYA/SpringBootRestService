@@ -36,11 +36,11 @@ public class PaymentController {
             int userId = request.getUserId();
             String itemId = request.getItemId();
             double discount = request.getDiscount();
-            UserService.pay();
+
             response = new BaseResponse(SUCCESS_STATUS, CODE_SUCCESS);
         } else {
             response = new BaseResponse(ERROR_STATUS, AUTH_FAILURE);
         }
-        return response;
+        return UserService.pay(response);
     }
 }
